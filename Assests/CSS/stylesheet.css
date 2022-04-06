@@ -1,0 +1,52 @@
+body{
+    font-family: "roboto" sans-serif;
+}
+header {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    font-family: "roboto", sans-serif;
+}
+.head{
+    display: flex;
+    justify-content: center;
+
+    background: linear-gradient(110deg, #3446eb 60%, #6534eb 60%);
+
+}
+.formcont{
+    display: inline;
+}
+.search{
+font-family: "roboto", sans-serif;
+font-size: 30px;
+
+}
+form{
+margin: 5px;
+
+}
+.searchbtn{
+    
+}
+.wthrcont{
+    border: solid black;
+    width: 1500px;
+    height: 400px;
+    left: 20vw;
+    top: 10vh;
+    position: absolute
+    
+
+}
+.currentcity{
+    margin: 10px;
+}
+.list{
+list-style: none;
+font-size: 20px;
+padding: 10px;
+}
+.listitemtemp, .listitemwind, .listitemhumidity, .listitemuv{
+margin: 30px;
+}
