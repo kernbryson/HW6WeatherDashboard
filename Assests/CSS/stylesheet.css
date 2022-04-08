@@ -17,6 +17,9 @@ header {
 .formcont{
     display: inline;
 }
+.searchbox{
+    margin: 10px;
+}
 .search{
 font-family: "roboto", sans-serif;
 font-size: 30px;
@@ -31,8 +34,8 @@ margin: 5px;
 }
 .wthrcont{
     border: solid black;
-    width: 1500px;
-    height: 400px;
+    width: 75vw;
+    height: 40vh;
     left: 20vw;
     top: 10vh;
     position: absolute
@@ -49,4 +52,36 @@ padding: 10px;
 }
 .listitemtemp, .listitemwind, .listitemhumidity, .listitemuv{
 margin: 30px;
+}
+.fiveday{
+    position: absolute;
+    left:20vw;
+    top:55vh;
+    width: 75vw;
+    height: 40vh;
+    
+}
+.fivedaycard{
+    list-style: none;
+    left: 0px;
+    position: absolute;
+}
+.cards{
+    position: absolute;
+    left: 1vw;
+    height: 35vh;
+}
+.cardpadding{
+    padding-top: 30px;
+ 
+}.ccolor{
+    background-color: #336699;
+    color: white;
+    margin: 15px;
+}
+.pastcitylist{
+    list-style: none;
+}
+.listbuttons{
+margin: 5px;
 }

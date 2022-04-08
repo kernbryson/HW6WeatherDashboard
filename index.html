@@ -10,29 +10,44 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./Assests/CSS/stylesheet.css" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
   </head>
   <body>
     <div class="head">
       <header>Weather Dashboard</header>
     </div>
     <div class="formcont">
-      <form>
+      <div class="searchbox">
         <div class="column mb-3">
-          <label for="inputcity" class="col-sm-3 search"
-            >Search for a city:</label
-          >
+          <label for="city" class="col-sm-3 search">Search for a city:</label>
           <div class="col-sm-2">
-            <input type="email" class="form-control" id="inputEmail3" />
+            <input type="textarea" class="form-control" id="inputcity" />
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary col-2 searchbtn">
+        <button
+          type="submit"
+          id="searchbtn"
+          class="btn btn-primary col-2 searchbtn"
+        >
           Search
         </button>
-      </form>
+      </div>
     </div>
+    <ul class="pastcitylist"></ul>
     <div class="wthrcont">
       <h1 class="currentcity">Atlanta</h1>
       <ul class="list">
@@ -42,18 +57,72 @@
         <li class="listitemuv">UV Index:</li>
       </ul>
     </div>
+    <div class="fiveday">
+      <h2>5-Day Forecast:</h2>
+      <div class="cards row">
+        <div class="card ccolor" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="fivedaycard">
+              <li class="cardpadding">Temp:</li>
+              <li class="cardpadding">Wind:</li>
+              <li class="cardpadding">Humidity:</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card ccolor" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="fivedaycard">
+              <li class="cardpadding">Temp:</li>
+              <li class="cardpadding">Wind:</li>
+              <li class="cardpadding">Humidity:</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card ccolor" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="fivedaycard">
+              <li class="cardpadding">Temp:</li>
+              <li class="cardpadding">Wind:</li>
+              <li class="cardpadding">Humidity:</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card ccolor" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="fivedaycard">
+              <li class="cardpadding">Temp:</li>
+              <li class="cardpadding">Wind:</li>
+              <li class="cardpadding">Humidity:</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card ccolor" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="fivedaycard">
+              <li class="cardpadding">Temp:</li>
+              <li class="cardpadding">Wind:</li>
+              <li class="cardpadding">Humidity:</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="./Assests/JS/index.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      src="https://kit.fontawesome.com/26de9939ad.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./Assests/JS/index.js"></script>
   </body>
 </html>
