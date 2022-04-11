@@ -82,8 +82,7 @@ function pastCities(currentCity) {
   listItem.append(listButton);
   listButton.textContent = currentCity;
   ulCity.append(listItem);
-  ulCity.addEventListener("click", getCoords, getForecast);
-  let saveCity = localStorage.setItem("past city", past).val());
+
 }
 function getForecast(lat, lon, city) {
   // let detailedApi = `https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&appid=${apiKey}`;
