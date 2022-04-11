@@ -85,3 +85,14 @@ margin: 30px;
 .listbuttons{
 margin: 5px;
 }
+.uvlow{
+    background-color: green;
+}
+.uvmed{
+    background-color: yellow;
+}
+.uvhigh{
+    background-color: orange;}
+.uvveryhigh{
+background-color: red;
+}
