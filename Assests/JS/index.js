@@ -32,20 +32,50 @@ let dateFive = document.querySelector("#datefive");
 let iconFive = document.querySelector("#iconfive");
 let tempFive = document.querySelector("#tempfive");
 let windFive = document.querySelector("#windfive");
+let cityArray = [];
+let looped = false;
 let humidityFive = document.querySelector("#humidityfive");
+var localItems = JSON.parse(localStorage.getItem("cities"));
 let vanish = document.querySelector("#vanish");
 vanish.style.display = "none";
 searchBtn.addEventListener("click", search);
 function search() {
   if (cityInput.value !== "") {
     let currentCity = cityInput.value;
-    pastCities(currentCity);
+    
     getCoords(currentCity);
     vanish.style.display = "inline";
   } else {
     alert("Input City Name");
   }
 }
+
+$(".pastcitylist").on("click", "li", function(event){
+  var previousCityName = $(this).text();
+  getPreviousCity(previousCityName);
+});
+
+
+function getPreviousCity(currentCity) {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+      currentCity +
+      "&appid=c7577d69243b15149b0c4dc918b1ce71" +
+      "&units=imperial"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      var featuredCityValue = data["name"];
+      let lat = data.coord.lat;
+      let lon = data.coord.lon;
+      getForecast(lat, lon, featuredCityValue);
+      console.log(data);
+    })
+
+    .catch((error) => alert("Invalid City!"));
+}
+
+
 function getCoords(currentCity) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -56,36 +86,58 @@ function getCoords(currentCity) {
     .then((response) => response.json())
     .then((data) => {
       var featuredCityValue = data["name"];
-      // var tempValue = data["main"]["temp"];
-      // var windValue = data["wind"]["speed"];
-
-      // currentWind.innerHTML = " " + windValue + " MPH";
-      // featuredCity.innerHTML = featuredCityValue;
-      // temp.innerHTML = " " + tempValue + "&#176";
       let lat = data.coord.lat;
       let lon = data.coord.lon;
       getForecast(lat, lon, featuredCityValue);
       console.log(data);
+      localStorageItems(currentCity);
+
     })
 
     .catch((error) => alert("Invalid City!"));
 }
+
+function localStorageItems(currentCity) {
+  if(localItems) {
+    cityArray = localItems;
+  }
+    cityArray.push(currentCity);
+    localStorage.setItem("cities", JSON.stringify(cityArray));   
+    pastCities(currentCity)
+}
 //records previous searches
 function pastCities(currentCity) {
-  let listItem = document.createElement("li");
-  let listButton = document.createElement("button");
-  listButton.classList.add("btn-secondary");
-  listButton.classList.add("btn");
-  listButton.classList.add("col-1");
-  listButton.classList.add("listbuttons");
+  if(!looped) {
+  for(i = 0; i < cityArray.length; i++) {
+    let listItem = document.createElement("li");
+    let listButton = document.createElement("button");
+    listButton.classList.add("btn-secondary");
+    listButton.classList.add("btn");
+    listButton.classList.add("col-1");
+    listButton.classList.add("listbuttons");
 
-  listItem.append(listButton);
-  listButton.textContent = currentCity;
-  ulCity.append(listItem);
-
+    listItem.append(listButton);
+    listButton.textContent = cityArray[i];
+    ulCity.append(listItem);
+    looped = true;
 }
+  }
+  else {
+    let listItem = document.createElement("li");
+    let listButton = document.createElement("button");
+    listButton.classList.add("btn-secondary");
+    listButton.classList.add("btn");
+    listButton.classList.add("col-1");
+    listButton.classList.add("listbuttons");
+    listItem.append(listButton);
+    listButton.textContent = currentCity;
+
+    ulCity.append(listItem);
+  }
+}
+
+
 function getForecast(lat, lon, city) {
-  // let detailedApi = `https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${time}&appid=${apiKey}`;
   let detailedApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`;
 
   fetch(detailedApi)
