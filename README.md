@@ -1,5 +1,7 @@
 # Weather Dashboard
 
+https://kernbryson.github.io/HW6WeatherDashboard/
+
 ## Description
 
 For this project I created a weather dashboard that displays the current weather in your city along with the five day forecast. My motivation behind this project was to give users a way of checking the weather while also giving them useful information like the current UV index and humidity. Throughout the course of creating this project, I was able to get a better grasp on how to call Api's and how to manipulate them to give me the information I want.

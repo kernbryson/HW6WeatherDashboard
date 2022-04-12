@@ -42,7 +42,7 @@ searchBtn.addEventListener("click", search);
 function search() {
   if (cityInput.value !== "") {
     let currentCity = cityInput.value;
-    
+
     getCoords(currentCity);
     vanish.style.display = "inline";
   } else {
@@ -50,11 +50,10 @@ function search() {
   }
 }
 
-$(".pastcitylist").on("click", "li", function(event){
+$(".pastcitylist").on("click", "li", function (event) {
   var previousCityName = $(this).text();
   getPreviousCity(previousCityName);
 });
-
 
 function getPreviousCity(currentCity) {
   fetch(
@@ -75,7 +74,7 @@ function getPreviousCity(currentCity) {
     .catch((error) => alert("Invalid City!"));
 }
 
-
+//grabs coordinates for the function that grabs the weather
 function getCoords(currentCity) {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -91,38 +90,36 @@ function getCoords(currentCity) {
       getForecast(lat, lon, featuredCityValue);
       console.log(data);
       localStorageItems(currentCity);
-
     })
 
     .catch((error) => alert("Invalid City!"));
 }
 
 function localStorageItems(currentCity) {
-  if(localItems) {
+  if (localItems) {
     cityArray = localItems;
   }
-    cityArray.push(currentCity);
-    localStorage.setItem("cities", JSON.stringify(cityArray));   
-    pastCities(currentCity)
+  cityArray.push(currentCity);
+  localStorage.setItem("cities", JSON.stringify(cityArray));
+  pastCities(currentCity);
 }
 //records previous searches
 function pastCities(currentCity) {
-  if(!looped) {
-  for(i = 0; i < cityArray.length; i++) {
-    let listItem = document.createElement("li");
-    let listButton = document.createElement("button");
-    listButton.classList.add("btn-secondary");
-    listButton.classList.add("btn");
-    listButton.classList.add("col-1");
-    listButton.classList.add("listbuttons");
+  if (!looped) {
+    for (i = 0; i < cityArray.length; i++) {
+      let listItem = document.createElement("li");
+      let listButton = document.createElement("button");
+      listButton.classList.add("btn-secondary");
+      listButton.classList.add("btn");
+      listButton.classList.add("col-1");
+      listButton.classList.add("listbuttons");
 
-    listItem.append(listButton);
-    listButton.textContent = cityArray[i];
-    ulCity.append(listItem);
-    looped = true;
-}
-  }
-  else {
+      listItem.append(listButton);
+      listButton.textContent = cityArray[i];
+      ulCity.append(listItem);
+      looped = true;
+    }
+  } else {
     let listItem = document.createElement("li");
     let listButton = document.createElement("button");
     listButton.classList.add("btn-secondary");
@@ -136,7 +133,7 @@ function pastCities(currentCity) {
   }
 }
 
-
+//fetches weather api
 function getForecast(lat, lon, city) {
   let detailedApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`;
 
